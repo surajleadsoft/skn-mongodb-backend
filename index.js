@@ -3,10 +3,12 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const User = require('./models/User')
+const productRoutes = require('./routes/productRoutes')
 
 const server = express()
 server.use(cors())
 server.use(bodyParser.json())
+server.use('/product',productRoutes)
 
 // Connect Atlast Cloud DB 
 mongoose.connect('mongodb+srv://suraj:Suraj%40123@cluster0.flnskgw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0').
