@@ -59,6 +59,20 @@ server.post('/login',async(req,res)=>{
     }
 })
 
+server.get('/get-fullName/:userName',async(req,res)=>{
+    try{
+        const userName = req.params.userName
+        const user = await User.find({userName})
+        res.json({
+            status:true,
+            message:user
+        })
+    }   
+    catch(err){
+        res.json({status:false,message:err})
+    }
+})
+
 server.listen(8055,()=>{
     console.log('Server started listening on port 8055')
 })
